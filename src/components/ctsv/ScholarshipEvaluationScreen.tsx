@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { Badge } from '../ui/badge';
+import { toast } from 'sonner@2.0.3';
 import type { Language } from '../../App';
 
 const mockStudents = [
@@ -59,6 +60,7 @@ export function ScholarshipEvaluationScreen({ language }: { language: Language }
                 </SelectContent>
               </Select>
             </div>
+
             <Select value={department} onValueChange={setDepartment}>
               <SelectTrigger className="w-48">
                 <SelectValue />
@@ -69,8 +71,16 @@ export function ScholarshipEvaluationScreen({ language }: { language: Language }
                 <SelectItem value="ee">Electrical Engineering</SelectItem>
               </SelectContent>
             </Select>
+
             <div className="flex-1" />
-            <Button variant="outline">
+
+            {/* Export Button with Toast */}
+            <Button
+              variant="outline"
+              onClick={() =>
+                toast.success(language === 'en' ? 'Downloaded' : 'Đã tải xuống')
+              }
+            >
               <Download className="h-4 w-4 mr-2" />
               {t.export}
             </Button>
@@ -92,6 +102,7 @@ export function ScholarshipEvaluationScreen({ language }: { language: Language }
                 <TableHead className="text-right">Rating</TableHead>
               </TableRow>
             </TableHeader>
+
             <TableBody>
               {mockStudents.map((student) => (
                 <TableRow key={student.id}>
@@ -105,6 +116,7 @@ export function ScholarshipEvaluationScreen({ language }: { language: Language }
                 </TableRow>
               ))}
             </TableBody>
+
           </Table>
         </CardContent>
       </Card>

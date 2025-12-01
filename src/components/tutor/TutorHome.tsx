@@ -88,8 +88,8 @@ export function TutorHome({ onNavigate, language, user }: any) {
               <Calendar className="h-5 w-5 text-purple-600" />
             </div>
             <p className="text-3xl text-purple-700 mb-1">5</p>
-            <Button 
-              variant="link" 
+            <Button
+              variant="link"
               className="p-0 h-auto text-purple-600 hover:text-purple-700"
               onClick={() => onNavigate('consultation')}
             >
@@ -103,8 +103,8 @@ export function TutorHome({ onNavigate, language, user }: any) {
               <MessageSquare className="h-5 w-5 text-indigo-600" />
             </div>
             <p className="text-3xl text-indigo-700 mb-1">8</p>
-            <Button 
-              variant="link" 
+            <Button
+              variant="link"
               className="p-0 h-auto text-purple-600 hover:text-purple-700"
               onClick={() => onNavigate('qa')}
             >
@@ -118,8 +118,8 @@ export function TutorHome({ onNavigate, language, user }: any) {
               <Trophy className="h-5 w-5 text-amber-600" />
             </div>
             <p className="text-3xl text-amber-700 mb-1">2</p>
-            <Button 
-              variant="link" 
+            <Button
+              variant="link"
               className="p-0 h-auto text-purple-600 hover:text-purple-700"
               onClick={() => onNavigate('contests')}
             >
@@ -194,10 +194,10 @@ export function TutorHome({ onNavigate, language, user }: any) {
                       </div>
                     </div>
                   </div>
-                  <Badge 
-                    variant="outline" 
+                  <Badge
+                    variant="outline"
                     className={
-                      session.status === 'completed' 
+                      session.status === 'completed'
                         ? 'border-green-300 bg-green-50 text-green-700'
                         : 'border-purple-300 bg-purple-50 text-purple-700'
                     }
@@ -240,8 +240,8 @@ export function TutorHome({ onNavigate, language, user }: any) {
                       <span className="text-sm text-gray-600">{question.student}</span>
                     </div>
                   </div>
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
                     onClick={() => onNavigate('qa')}
                   >

@@ -11,21 +11,24 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { toast } from 'sonner@2.0.3';
 import type { Language } from '../../App';
 
-const mockContests = [
-  { id: 1, name: 'Algorithm Challenge 2025', type: 'academic', status: 'open', participants: 45, created: 'Dec 10, 2025' },
-  { id: 2, name: 'Data Science Competition', type: 'academic', status: 'closed', participants: 67, created: 'Nov 1, 2025' }
-];
-
-interface TutorContestsScreenProps {
-  language: Language;
-  onNavigate?: (screen: string, contestId?: number) => void;
+interface Contest {
+  id: number;
+  name: string;
+  type: 'academic' | 'non-academic';
+  status: 'open' | 'closed';
+  participants: number;
+  created: string;
 }
 
-export function TutorContestsScreen({ language, onNavigate }: TutorContestsScreenProps) {
+export function TutorContestsScreen({ language }: { language: Language }) {
   const [open, setOpen] = useState(false);
-  const [contestType, setContestType] = useState('academic');
+  const [contestType, setContestType] = useState<'academic' | 'non-academic'>('academic');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [contests, setContests] = useState<Contest[]>([
+    { id: 1, name: 'Algorithm Challenge 2025', type: 'academic', status: 'open', participants: 45, created: 'Dec 10, 2025' },
+    { id: 2, name: 'Data Science Competition', type: 'academic', status: 'closed', participants: 67, created: 'Nov 1, 2025' }
+  ]);
 
   const t = {
     title: language === 'en' ? 'Contests (Tutor)' : 'Cuộc thi (Cố vấn)',
@@ -35,18 +38,14 @@ export function TutorContestsScreen({ language, onNavigate }: TutorContestsScree
     type: language === 'en' ? 'Contest type' : 'Loại cuộc thi',
     academic: language === 'en' ? 'Academic' : 'Học thuật',
     nonAcademic: language === 'en' ? 'Non-academic' : 'Phi học thuật',
-    rules: language === 'en' ? 'Rules and conditions' : 'Quy định và điều kiện',
-    prizes: language === 'en' ? 'Prizes' : 'Giải thưởng',
     startDate: language === 'en' ? 'Start date' : 'Ngày bắt đầu',
     endDate: language === 'en' ? 'End date' : 'Ngày kết thúc',
     cancel: language === 'en' ? 'Cancel' : 'Hủy',
     participants: language === 'en' ? 'participants' : 'người tham gia',
     open: language === 'en' ? 'Open' : 'Đang mở',
     closed: language === 'en' ? 'Closed' : 'Đã đóng',
-    draft: language === 'en' ? 'Draft' : 'Bản nháp',
     exportResults: language === 'en' ? 'Export results' : 'Xuất kết quả',
     success: language === 'en' ? 'Contest created successfully!' : 'Đã tạo cuộc thi!',
-    viewDetails: language === 'en' ? 'View details' : 'Xem chi tiết',
     downloaded: language === 'en' ? 'Downloaded' : 'Đã tải xuống'
   };
 
@@ -55,6 +54,17 @@ export function TutorContestsScreen({ language, onNavigate }: TutorContestsScree
       toast.error(language === 'en' ? 'Please fill all required fields' : 'Vui lòng điền đầy đủ thông tin');
       return;
     }
+
+    const newContest: Contest = {
+      id: contests.length + 1,
+      name,
+      type: contestType,
+      status: 'open',
+      participants: 0,
+      created: new Date().toLocaleDateString()
+    };
+
+    setContests([newContest, ...contests]);
     toast.success(t.success);
     setOpen(false);
     setName('');
@@ -93,11 +103,11 @@ export function TutorContestsScreen({ language, onNavigate }: TutorContestsScree
               </div>
               <div className="space-y-2">
                 <Label htmlFor="name">{t.name} *</Label>
-                <Input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                <Input id="name" value={name} onChange={e => setName(e.target.value)} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="description">{t.description} *</Label>
-                <Textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} rows={4} />
+                <Textarea id="description" value={description} onChange={e => setDescription(e.target.value)} rows={4} />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -119,7 +129,7 @@ export function TutorContestsScreen({ language, onNavigate }: TutorContestsScree
       </div>
 
       <div className="space-y-4">
-        {mockContests.map((contest) => (
+        {contests.map(contest => (
           <Card key={contest.id}>
             <CardHeader>
               <div className="flex items-start justify-between">
@@ -144,27 +154,22 @@ export function TutorContestsScreen({ language, onNavigate }: TutorContestsScree
                   </div>
                   <Badge variant="outline">{contest.type}</Badge>
                 </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      if (onNavigate) {
-                        onNavigate('contest-detail', contest.id);
-                      }
-                    }}
-                  >
-                    {t.viewDetails}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => toast.success(t.downloaded)}
-                  >
-                    <Download className="h-4 w-4 mr-2" />
-                    {t.exportResults}
-                  </Button>
-                </div>
+                {/* <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast.success(t.downloaded)}
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  {t.exportResults}
+                </Button> */}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast.success(t.downloaded)}
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  {t.exportResults}
+                </Button>
               </div>
             </CardContent>
           </Card>

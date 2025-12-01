@@ -21,8 +21,8 @@ export function PasswordRecoveryScreen({ onNavigate, language }: PasswordRecover
 
   const t = {
     title: language === 'en' ? 'Find Your Account' : 'Tìm tài khoản của bạn',
-    subtitle: language === 'en' 
-      ? 'Please enter your BKnetID to search for your account.' 
+    subtitle: language === 'en'
+      ? 'Please enter your BKnetID to search for your account.'
       : 'Vui lòng nhập BKnetID của bạn để tìm kiếm tài khoản.',
     verifyTitle: language === 'en' ? 'Reset Your Password' : 'Đặt lại mật khẩu',
     verifySubtitle: language === 'en'

@@ -44,8 +44,8 @@ export function CourseDetailScreen({ language, courseId, onBack }: CourseDetailS
     code: 'CS301',
     name: language === 'en' ? 'Machine Learning' : 'Học máy',
     department: language === 'en' ? 'Computer Science' : 'Khoa học máy tính',
-    description: language === 'en' 
-      ? 'This course provides a comprehensive introduction to machine learning, covering supervised and unsupervised learning, neural networks, and deep learning. Students will gain hands-on experience with popular ML frameworks and work on real-world projects.' 
+    description: language === 'en'
+      ? 'This course provides a comprehensive introduction to machine learning, covering supervised and unsupervised learning, neural networks, and deep learning. Students will gain hands-on experience with popular ML frameworks and work on real-world projects.'
       : 'Môn học này cung cấp giới thiệu toàn diện về học máy, bao gồm học có giám sát và không giám sát, mạng nơ-ron và học sâu. Sinh viên sẽ có kinh nghiệm thực hành với các framework ML phổ biến và làm việc trên các dự án thực tế.',
     credits: 4,
     duration: 15,
@@ -185,11 +185,10 @@ export function CourseDetailScreen({ language, courseId, onBack }: CourseDetailS
             </div>
             <Button
               size="lg"
-              className={`${
-                course.requested
+              className={`${course.requested
                   ? 'bg-white/20 hover:bg-white/30'
                   : 'bg-white text-purple-600 hover:bg-purple-50'
-              }`}
+                }`}
               disabled={course.requested}
             >
               {course.requested ? t.requested : t.request}

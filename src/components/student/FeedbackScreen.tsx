@@ -193,11 +193,10 @@ export function FeedbackScreen({ language }: FeedbackScreenProps) {
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Card
-                  className={`cursor-pointer ${
-                    evaluationType === 'tutor'
+                  className={`cursor-pointer ${evaluationType === 'tutor'
                       ? 'border-blue-600 bg-blue-50'
                       : ''
-                  }`}
+                    }`}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-2">
@@ -212,11 +211,10 @@ export function FeedbackScreen({ language }: FeedbackScreenProps) {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`cursor-pointer ${
-                    evaluationType === 'session'
+                  className={`cursor-pointer ${evaluationType === 'session'
                       ? 'border-blue-600 bg-blue-50'
                       : ''
-                  }`}
+                    }`}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-2">
@@ -234,11 +232,10 @@ export function FeedbackScreen({ language }: FeedbackScreenProps) {
                   </CardContent>
                 </Card>
                 <Card
-                  className={`cursor-pointer ${
-                    evaluationType === 'course'
+                  className={`cursor-pointer ${evaluationType === 'course'
                       ? 'border-blue-600 bg-blue-50'
                       : ''
-                  }`}
+                    }`}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-2">
@@ -272,11 +269,10 @@ export function FeedbackScreen({ language }: FeedbackScreenProps) {
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star
                     key={star}
-                    className={`h-8 w-8 cursor-pointer transition-colors ${
-                      star <= (hoverRating || rating)
+                    className={`h-8 w-8 cursor-pointer transition-colors ${star <= (hoverRating || rating)
                         ? 'fill-yellow-400 text-yellow-400'
                         : 'text-gray-300'
-                    }`}
+                      }`}
                     onMouseEnter={() => setHoverRating(star)}
                     onMouseLeave={() => setHoverRating(0)}
                     onClick={() => setRating(star)}

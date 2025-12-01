@@ -100,16 +100,16 @@ export function CoDHome({ onNavigate, language }: any) {
                 <p className="opacity-90">Monitor and manage your department's performance</p>
               </div>
               <div className="flex gap-4">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm"
                   onClick={() => onNavigate('courses')}
                 >
                   <BookOpen className="mr-2 h-4 w-4" />
                   {t.manageCourses}
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm"
                   onClick={() => onNavigate('staff')}
                 >
@@ -172,11 +172,10 @@ export function CoDHome({ onNavigate, language }: any) {
             {activities.map((activity, idx) => (
               <Card key={idx} className="p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-4">
-                  <div className={`h-10 w-10 rounded-full flex items-center justify-center ${
-                    activity.type === 'course' ? 'bg-purple-100 text-purple-700' :
-                    activity.type === 'staff' ? 'bg-indigo-100 text-indigo-700' :
-                    'bg-pink-100 text-pink-700'
-                  }`}>
+                  <div className={`h-10 w-10 rounded-full flex items-center justify-center ${activity.type === 'course' ? 'bg-purple-100 text-purple-700' :
+                      activity.type === 'staff' ? 'bg-indigo-100 text-indigo-700' :
+                        'bg-pink-100 text-pink-700'
+                    }`}>
                     {activity.type === 'course' && <BookOpen className="h-5 w-5" />}
                     {activity.type === 'staff' && <Users className="h-5 w-5" />}
                     {activity.type === 'report' && <BarChart3 className="h-5 w-5" />}

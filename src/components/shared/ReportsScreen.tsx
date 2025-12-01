@@ -22,6 +22,9 @@ export function ReportsScreen({ language, role }: { language: Language; role: 'c
   const [exportFormat, setExportFormat] = useState('pdf');
   const [exportOpen, setExportOpen] = useState(false);
 
+  // ADD: popup when downloaded
+  const [downloadPopup, setDownloadPopup] = useState(false);
+
   const t = {
     title: language === 'en' ? 'Reports' : 'Báo cáo',
     filters: language === 'en' ? 'Filters' : 'Bộ lọc',
@@ -74,11 +77,33 @@ export function ReportsScreen({ language, role }: { language: Language; role: 'c
             </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setExportOpen(false)}>{t.cancel}</Button>
-              <Button onClick={() => setExportOpen(false)}>{t.generate}</Button>
+
+              {/* MODIFY: show popup when clicked */}
+              <Button
+                onClick={() => {
+                  setExportOpen(false);
+                  setDownloadPopup(true);
+                }}
+              >
+                {t.generate}
+              </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
+
+      {/* DOWNLOAD SUCCESS POPUP */}
+      <Dialog open={downloadPopup} onOpenChange={setDownloadPopup}>
+        <DialogContent className="text-center">
+          <DialogHeader>
+            <DialogTitle className="text-green-600">Downloaded</DialogTitle>
+            <DialogDescription>The report was generated successfully.</DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="mt-4">
+            <Button onClick={() => setDownloadPopup(false)}>OK</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <Card className="mb-6">
         <CardHeader>

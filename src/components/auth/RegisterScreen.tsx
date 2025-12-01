@@ -32,8 +32,8 @@ export function RegisterScreen({ onNavigate, language }: RegisterScreenProps) {
     passwordMismatch: language === 'en' ? 'Passwords do not match' : 'Mật khẩu không khớp',
     required: language === 'en' ? 'Please fill in all fields' : 'Vui lòng điền đầy đủ thông tin',
     success: language === 'en' ? 'Registration successful! Redirecting to login...' : 'Đăng ký thành công! Đang chuyển đến đăng nhập...',
-    terms: language === 'en' 
-      ? 'By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy.' 
+    terms: language === 'en'
+      ? 'By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy.'
       : 'Bằng việc nhấn Đăng ký, bạn đồng ý với Điều khoản, Chính sách quyền riêng tư và Chính sách cookie của chúng tôi.',
   };
   const handleRegister = async () => {
@@ -76,9 +76,9 @@ export function RegisterScreen({ onNavigate, language }: RegisterScreenProps) {
         // message là do BE trả về, ví dụ "BKNetID already exists"
         setError(
           data.message ||
-            (language === 'en'
-              ? 'Registration failed'
-              : 'Đăng ký thất bại')
+          (language === 'en'
+            ? 'Registration failed'
+            : 'Đăng ký thất bại')
         );
         return;
       }

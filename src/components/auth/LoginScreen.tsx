@@ -32,8 +32,8 @@ export function LoginScreen({ onLogin, onNavigate, language }: LoginScreenProps)
   const t = {
     title: 'HCMUT',
     subtitle: language === 'en' ? 'Tutor Support System' : 'Hệ thống Cố vấn học tập',
-    tagline: language === 'en' 
-      ? 'Connect with tutors and achieve your academic goals' 
+    tagline: language === 'en'
+      ? 'Connect with tutors and achieve your academic goals'
       : 'Kết nối với cố vấn và đạt được mục tiêu học tập',
     login: language === 'en' ? 'Log In' : 'Đăng nhập',
     createAccount: language === 'en' ? 'Register' : 'Tạo tài khoản mới',
@@ -48,30 +48,30 @@ export function LoginScreen({ onLogin, onNavigate, language }: LoginScreenProps)
   };
 
   const handleLogin = async () => {
-  setError('');
+    setError('');
 
-  if (!bknetId.trim() || !password.trim()) {
-    setError(language === 'en' ? 'Please fill in all fields' : 'Vui lòng điền đầy đủ thông tin');
-    return;
-  }
-
-  try {
-    const res = await fetch('http://localhost:3001/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ bknetId, password }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok || !data.success) {
-      setError(data.message || (language === 'en' ? 'Login failed' : 'Đăng nhập thất bại'));
-      setShowErrorDialog(true);
+    if (!bknetId.trim() || !password.trim()) {
+      setError(language === 'en' ? 'Please fill in all fields' : 'Vui lòng điền đầy đủ thông tin');
       return;
     }
 
-    // dùng role từ server
-    onLogin(data.user.bknetId, data.user.role);
+    try {
+      const res = await fetch('http://localhost:3001/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bknetId, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setError(data.message || (language === 'en' ? 'Login failed' : 'Đăng nhập thất bại'));
+        setShowErrorDialog(true);
+        return;
+      }
+
+      // dùng role từ server
+      onLogin(data.user.bknetId, data.user.role);
     } catch (err) {
       setError(language === 'en' ? 'Cannot connect to server' : 'Không thể kết nối server');
     }
@@ -130,8 +130,8 @@ export function LoginScreen({ onLogin, onNavigate, language }: LoginScreenProps)
                 />
               </div>
 
-              <Button 
-                onClick={handleLogin} 
+              <Button
+                onClick={handleLogin}
                 className="w-full h-12 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
               >
                 {t.login}
@@ -163,11 +163,10 @@ export function LoginScreen({ onLogin, onNavigate, language }: LoginScreenProps)
                   {(['student', 'tutor', 'cod', 'ctsv'] as UserRole[]).map((role) => (
                     <button
                       key={role}
-                      className={`px-2 py-1.5 rounded text-xs transition-colors ${
-                        selectedRole === role
-                          ? 'bg-purple-600 text-white'
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                      }`}
+                      className={`px-2 py-1.5 rounded text-xs transition-colors ${selectedRole === role
+                        ? 'bg-purple-600 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        }`}
                       onClick={() => setSelectedRole(role)}
                       type="button"
                     >

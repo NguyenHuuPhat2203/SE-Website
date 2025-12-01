@@ -193,12 +193,10 @@ export function ContestDetailScreen({ language, onBack, contestId }: ContestDeta
             <div className="flex-1">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-4">
-                  <div className={`h-16 w-16 rounded-full flex items-center justify-center ${
-                    contest.type === 'academic' ? 'bg-purple-100' : 'bg-indigo-100'
-                  }`}>
-                    <Trophy className={`h-8 w-8 ${
-                      contest.type === 'academic' ? 'text-purple-600' : 'text-indigo-600'
-                    }`} />
+                  <div className={`h-16 w-16 rounded-full flex items-center justify-center ${contest.type === 'academic' ? 'bg-purple-100' : 'bg-indigo-100'
+                    }`}>
+                    <Trophy className={`h-8 w-8 ${contest.type === 'academic' ? 'text-purple-600' : 'text-indigo-600'
+                      }`} />
                   </div>
                   <div>
                     <h1 className="text-3xl mb-2">{contest.title}</h1>
@@ -226,7 +224,7 @@ export function ContestDetailScreen({ language, onBack, contestId }: ContestDeta
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <Button 
+              <Button
                 className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
                 disabled={contest.status === 'closed'}
               >

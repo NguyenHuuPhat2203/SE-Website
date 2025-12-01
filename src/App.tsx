@@ -27,7 +27,8 @@ import { TutorContestsScreen } from './components/tutor/TutorContestsScreen';
 import { QuestionDetailScreen } from './components/shared/QuestionDetailScreen';
 import { ConsultationSessionDetailScreen } from './components/tutor/ConsultationSessionDetailScreen';
 import { CoDHome } from './components/cod/CoDHome';
-import { ManageCoursesScreen } from './components/cod/ManageCoursesScreen';
+// import { ManageCoursesScreen } from './components/cod/ManageCoursesScreen';
+import { ManageCoursesAndRequests } from './components/cod/ManageCoursesScreen';
 import { CourseRequestsScreen } from './components/cod/CourseRequestsScreen';
 import { ManageStaffScreen } from './components/cod/ManageStaffScreen';
 import { ReportsScreen } from './components/shared/ReportsScreen';
@@ -167,7 +168,7 @@ export default function App() {
             />
           );
         case 'notifications':
-          return <StudentNotifications language={language} onUnreadChange={setUnreadNotifications} allowCompose/>;
+          return <StudentNotifications language={language} onUnreadChange={setUnreadNotifications} allowCompose />;
         case 'feedback':
           return <FeedbackScreen language={language} />;
         case 'qa':
@@ -311,7 +312,8 @@ export default function App() {
         case 'home':
           return <CoDHome onNavigate={setCurrentScreen} language={language} />;
         case 'manage-courses':
-          return <ManageCoursesScreen language={language} onNavigate={setCurrentScreen} />;
+          // return <ManageCoursesScreen language={language} onNavigate={setCurrentScreen} />;
+          return <ManageCoursesAndRequests language={language} onNavigate={setCurrentScreen} />;
         case 'course-requests':
           return <CourseRequestsScreen language={language} />;
         case 'manage-staff':

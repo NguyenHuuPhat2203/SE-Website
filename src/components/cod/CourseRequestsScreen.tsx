@@ -110,14 +110,14 @@ export function CourseRequestsScreen({ language }: { language: Language }) {
   };
 
   const filteredRequests = mockRequests.filter(r => {
-    const matchesSearch = 
+    const matchesSearch =
       r.studentName.toLowerCase().includes(search.toLowerCase()) ||
       r.studentId.includes(search) ||
       r.courseCode.toLowerCase().includes(search.toLowerCase()) ||
       r.courseName.toLowerCase().includes(search.toLowerCase());
-    
+
     const matchesStatus = statusFilter === 'all' || r.status === statusFilter;
-    
+
     return matchesSearch && matchesStatus;
   });
 

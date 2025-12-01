@@ -81,11 +81,10 @@ export function Sidebar({ role, currentScreen, onNavigate, onLogout, language }:
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                isActive
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive
                   ? 'bg-gradient-to-r from-purple-50 to-indigo-50 text-purple-700 border border-purple-200'
                   : 'text-gray-700 hover:bg-gray-50'
-              }`}
+                }`}
             >
               <Icon className="h-5 w-5" />
               <span className="text-sm">{item.label[language]}</span>
@@ -93,7 +92,7 @@ export function Sidebar({ role, currentScreen, onNavigate, onLogout, language }:
           );
         })}
       </nav>
-      
+
       {/* Logout Button */}
       <div className="px-3 pb-6">
         <button

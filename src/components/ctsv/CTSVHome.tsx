@@ -70,8 +70,8 @@ export function CTSVHome({ onNavigate, language }: any) {
               <GraduationCap className="h-5 w-5 text-purple-600" />
             </div>
             <p className="text-3xl text-purple-700 mb-1">12</p>
-            <Button 
-              variant="link" 
+            <Button
+              variant="link"
               className="p-0 h-auto text-purple-600 hover:text-purple-700"
               onClick={() => onNavigate('evaluation')}
             >
@@ -172,8 +172,8 @@ export function CTSVHome({ onNavigate, language }: any) {
                       </p>
                     </div>
                   </div>
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
                     onClick={() => onNavigate('evaluation')}
                   >
@@ -197,11 +197,10 @@ export function CTSVHome({ onNavigate, language }: any) {
             {activities.map((activity, idx) => (
               <Card key={idx} className="p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-4">
-                  <div className={`h-10 w-10 rounded-full flex items-center justify-center ${
-                    activity.type === 'approved' ? 'bg-green-100 text-green-700' :
-                    activity.type === 'contest' ? 'bg-amber-100 text-amber-700' :
-                    'bg-blue-100 text-blue-700'
-                  }`}>
+                  <div className={`h-10 w-10 rounded-full flex items-center justify-center ${activity.type === 'approved' ? 'bg-green-100 text-green-700' :
+                      activity.type === 'contest' ? 'bg-amber-100 text-amber-700' :
+                        'bg-blue-100 text-blue-700'
+                    }`}>
                     {activity.type === 'approved' && <CheckCircle className="h-5 w-5" />}
                     {activity.type === 'contest' && <Trophy className="h-5 w-5" />}
                     {activity.type === 'notification' && <Award className="h-5 w-5" />}
@@ -263,16 +262,16 @@ export function CTSVHome({ onNavigate, language }: any) {
         <Card className="p-6">
           <h3 className="mb-4">Quick Actions</h3>
           <div className="space-y-2">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full justify-start"
               onClick={() => onNavigate('evaluation')}
             >
               <FileText className="mr-2 h-4 w-4" />
               New Evaluation
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full justify-start"
               onClick={() => onNavigate('reports')}
             >

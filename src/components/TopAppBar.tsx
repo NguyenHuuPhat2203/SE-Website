@@ -60,17 +60,15 @@ export function TopAppBar({
         <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
           <button
             onClick={onToggleLanguage}
-            className={`px-3 py-1 rounded text-sm transition-colors ${
-              language === 'vi' ? 'bg-white shadow-sm' : 'text-gray-600'
-            }`}
+            className={`px-3 py-1 rounded text-sm transition-colors ${language === 'vi' ? 'bg-white shadow-sm' : 'text-gray-600'
+              }`}
           >
             VI
           </button>
           <button
             onClick={onToggleLanguage}
-            className={`px-3 py-1 rounded text-sm transition-colors ${
-              language === 'en' ? 'bg-white shadow-sm' : 'text-gray-600'
-            }`}
+            className={`px-3 py-1 rounded text-sm transition-colors ${language === 'en' ? 'bg-white shadow-sm' : 'text-gray-600'
+              }`}
           >
             EN
           </button>

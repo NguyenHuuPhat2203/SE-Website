@@ -108,7 +108,7 @@ const mockTutorDetails = {
 
 export function TutorDetailScreen({ language, onBack, tutorId }: TutorDetailScreenProps) {
   const [consultationMessage, setConsultationMessage] = useState('');
-  
+
   const t = {
     back: language === 'en' ? 'Back' : 'Quay lại',
     overview: language === 'en' ? 'Overview' : 'Tổng quan',
@@ -329,11 +329,10 @@ export function TutorDetailScreen({ language, onBack, tutorId }: TutorDetailScre
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
-                        className={`h-4 w-4 ${
-                          i < review.rating
+                        className={`h-4 w-4 ${i < review.rating
                             ? 'fill-yellow-400 text-yellow-400'
                             : 'text-gray-300'
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
